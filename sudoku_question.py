@@ -27,6 +27,8 @@ peers = dict((s, set(sum(units[s],[]))-set([s]))
 
 def some(seq):
     "Return some element of seq that is true."
+    if seq is False:
+        return False
     for e in seq:
         if e: return e
     return False
@@ -135,24 +137,9 @@ def check_solved(values):
 ################ Solve ################
                 
 def solve(values):
-    "this takes a puzzle with all possible answers, and searches for a working answer"
-    "this uses what is called a depth-first search, and *eventually* will use recursion"
-    
-    #don't try and solve if you have no possible values
-    print("I haven't been implemented")
-    
-    #display your possible answers
+    print("the solve function hasn't been written yet")
+    #display possible answers
     display(values)    
-    
-    #check to see if the puzzle has been solved, return values if so
-    print("I haven't been implemented")
-    
-    #find the square with the fewest possibilites call it "smallest_square"
-    print("I haven't been implemented")
-       
-    #use the "assign" method to assign all possible value to that square
-    #return a valid (use "some") solution of the puzzle with those values
-    print("I haven't been implemented")
 
         
 

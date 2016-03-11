@@ -27,6 +27,8 @@ peers = dict((s, set(sum(units[s],[]))-set([s]))
 
 def some(seq):
     "Return some element of seq that is true."
+    if seq is False:
+        return False
     for e in seq:
         if e: return e
     return False
@@ -156,20 +158,22 @@ def solve(values):
     #display your possible answers
     display(values)    
     #check to see if the puzzle has been solved, return values if so
-    if(check_solved(values) == True):
+    if(check_solved(values) is True):
         return values
     else:
         #find the square with the fewest possibilites call it "smallest_square"
         min = 9
         smallest_square = squares[0]
         for s in squares:
-            if(len(values[s]) > 1 and len(values[s]) < min):
-                min = len(values[s])
+            num_possibilities = len(values[s])
+            if(num_possibilities > 1 and num_possibilities < min):
+                min = num_possibilities
                 smallest_square = s
         #use the "assign" method to assign all possible value to that square
         #return a valid (use "some") solution of the puzzle with those values
         for d in values[smallest_square]:
-            return some(solve(assign(values.copy(),smallest_square,d)))
+            new_values = assign(values.copy(),smallest_square,d)
+            return some(solve(new_values))
         
 
 ################ Main ##########################
